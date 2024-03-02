@@ -55,13 +55,12 @@ namespace ASP_CORE_MVC_DAPPER_STORED_PROCEDURES_REPOSITORY.Data
             }
         }
 
-        public IEnumerable<IProducto> ObtenerProductos()
-        {
-            using (var conexion = _conexion.ObtenerConexion())
-            {
-                return (IEnumerable<IProducto>)conexion.Query<Producto>("SP_ObtenerProductos", commandType: CommandType.StoredProcedure).ToList();
-            }
-    
-        }
-    }
+		public IEnumerable<Producto> ObtenerProductos()
+		{
+			using (var conexion = _conexion.ObtenerConexion())
+			{
+				return conexion.Query<Producto>("SP_ObtenerProductos", commandType: CommandType.StoredProcedure).ToList();
+			}
+		}
+	}
 }
