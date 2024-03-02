@@ -1,8 +1,10 @@
+using ASP_CORE_MVC_DAPPER_STORED_PROCEDURES_REPOSITORY.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddSingleton(new Conexion(builder.Configuration.GetConnectionString("conexion")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
